@@ -142,6 +142,12 @@ class _AddExpenseState extends State<AddExpense> {
       print("Title ::: $title,  Amount :: $amount,   Date ::: $_selectedDate");
     }
   }
+  void resetForm() {
+    _formKey.currentState?.reset();
+    _titleController.clear();
+    _amountController.clear();
+     
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -184,10 +190,32 @@ class _AddExpenseState extends State<AddExpense> {
               onPressed: () => showDatepicker(),
               child: Text("Choose Date"),
             ),
+            Row (
+            mainAxisAlignment: MainAxisAlignment.center,
+            children : [
             ElevatedButton(
               onPressed: () => submitForm(),
               child: Text("Add Expense"),
+              style : ElevatedButton.styleFrom(
+                backgroundColor : Colors.indigoAccent,
+                foregroundColor : Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0)
+                ),
+              ),
             ),
+            SizedBox(width:15.0),
+            ElevatedButton(
+              onPressed:() => resetForm(),
+              child: Text('Reset'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor : Colors.red,
+                foregroundColor : Colors.white,
+             
+              )
+            ),
+             ]),
+           
           ],
         ),
       ),
